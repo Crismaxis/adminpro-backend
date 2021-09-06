@@ -1,17 +1,16 @@
 require('dotenv').config();
+require('colors');
 require('./database/config.js').connection();
+const { msgPort } = require('./tools/msgServer');
 const express = require('express');
 const cors = require('cors');
 const app = express();
 
+/* Middlewares */
 app.use(cors());
-
-app.get('/',(req,res) => {
-    res.json({
-        msg:'correct'
-    });
-});
+app.use(express.json());
+app.use(require('./router/rest-router.js'));
 
 app.listen(process.env.PORT, ()=>{
-    console.log('listening on port '+process.env.PORT);
+    msgPort();
 });

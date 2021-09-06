@@ -6,7 +6,7 @@ const connection = async() =>{
             useNewUrlParser: true,
             useUnifiedTopology: true
         });
-        console.log('Database: on')
+        console.log('   DATABASE:'+'  On'.blue);
     } catch (error) {
         console.log(error);        
     }
