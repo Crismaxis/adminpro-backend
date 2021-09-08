@@ -5,7 +5,9 @@ const { generateJwt } = require('../helpers/jwt');
 const getUser= async (req, res) => {
 
     const count = await UserModel.count();
-    const data  = await UserModel.find();
+    const page = Number(req.query.page) || 0 ;
+    const limit = Number(req.query.limit) || 0 ;
+    const data  = await UserModel.find().skip(page).limit(limit);
     res.json({
         usersTotal: count,
         users: data

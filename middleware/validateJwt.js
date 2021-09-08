@@ -12,6 +12,7 @@ const validateJwt = (req,res,next)=>{
     try {
         const { _id } = jwt.verify(token, process.env.SECRET_KEY_JWT);
         if(_id){
+            req.id=_id;
             next();
         }
 

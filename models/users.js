@@ -1,5 +1,4 @@
 const { Schema, model} = require('mongoose');
-const { object } = require('webidl-conversions');
 
 const userSchema = Schema({
     name:{
